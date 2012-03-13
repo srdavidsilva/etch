@@ -4,12 +4,6 @@
         collections = {},
         etch = {};
 
-   // underscore template languate settings
-    _.templateSettings = {
-      interpolate : /\{\{(.+?)\}\}/g, // {{ var }}
-      evaluate: /\{\%(.+?)\%\}/g // {% expression %}
-    }; 
-
     // selector to specify editable elements   
     etch.selector = '.editable';
     
@@ -274,14 +268,19 @@
             // listen for mousedowns that are not coming from the editor
             // and close the editor
             $('body').bind('mousedown.editor', function(e) {
+                // check to see if the click was in an etch tool
                 if ($(e.srcElement).not('.etch-editor-panel, .etch-editor-panel *, .etch-image-tools, .etch-image-tools *').size()) {
+                    // remove editor
                     $editor.remove();
                     
-                    // unblind the image-tools if the editor isn't active
-                    $editable.find('img').unbind('mouseenter');
                     
-                    // remove any latent image tool model references
-                    $(etch.selector+' img').data('editableImageModel', false)
+                    if (models.EditableImage) {
+                        // unblind the image-tools if the editor isn't active
+                        $editable.find('img').unbind('mouseenter');
+
+                        // remove any latent image tool model references
+                        $(etch.selector+' img').data('editableImageModel', false)
+                    }
                     
                     // once the editor is removed, remove the body binding for it
                     $(this).unbind('mousedown.editor');
