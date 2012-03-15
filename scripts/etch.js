@@ -13,9 +13,8 @@
     // in the markup as "data-button-class"
     etch.buttonClasses = {
         'default': ['save'],
-        'all': ['bold', 'italic', 'underline', 'unordered-list', 'ordered-list', 'link', 'save'],
+        'all': ['heading', 'bold', 'italic', 'underline', 'unordered-list', 'ordered-list', 'link', 'save'],
         'title': ['bold', 'italic', 'underline', 'save'],
-        'fact': ['bold', 'italic', 'underline', 'link', 'save'],
     }
 
     models.Editor = Backbone.Model;
