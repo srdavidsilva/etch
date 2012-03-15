@@ -4,6 +4,8 @@
         collections = {},
         etch = {};
 
+    etch.VERSION = 0.5;
+
     // selector to specify editable elements   
     etch.selector = '.editable';
     
