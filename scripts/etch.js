@@ -121,27 +121,32 @@
         
         toggleHeading: function(e) {
             e.preventDefault();
-            var range = window.getSelection().getRangeAt(0);
-            var wrapper = range.commonAncestorContainer.parentElement
-            if ($(wrapper).is('h3')) {
-                $(wrapper).replaceWith(wrapper.textContent)
-                return;
-            }
-            var h3 = document.createElement('h3');
-            range.surroundContents(h3);
+
+            if (this.isTagMatchingSelection('H1'))
+                document.execCommand("formatblock", null, 'H2');
+            else if (this.isTagMatchingSelection('H2'))
+                document.execCommand("formatblock", null, 'H3');
+            else if (this.isTagMatchingSelection('H3'))
+                document.execCommand("formatblock", null, 'p');
+            else
+                document.execCommand("formatblock", null, 'H1');
         },
 
         toggleLink: function(e) {
             e.preventDefault();
-            var range = window.getSelection().getRangeAt(0);
 
             // are we in an anchor element?
-            if (range.startContainer.parentNode.tagName === 'A' || range.endContainer.parentNode.tagName === 'A') {
+            if (this.isTagMatchingSelection('A')) {
                 document.execCommand('unlink', false, null);
             } else {
                 var url = prompt('Enter a url');
                 document.execCommand('createLink', false, url);
             }
+        },
+
+        isTagMatchingSelection: function(tag) {
+            var range = window.getSelection().getRangeAt(0);
+            return range.startContainer.parentNode.tagName === tag || range.endContainer.parentNode.tagName === tag;
         },
 
         toggleUnorderedList: function(e) {
