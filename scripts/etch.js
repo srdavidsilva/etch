@@ -227,7 +227,8 @@
         // you use to initialize editing 
         editableInit: function(e) {
             e.stopPropagation();
-            var $editable = $(e.srcElement).etchFindEditable();
+            var target = e.target || e.srcElement;
+            var $editable = $(target).etchFindEditable();
             $editable.attr('contenteditable', true);
 
             // if the editor isn't already built, build it
@@ -269,7 +270,8 @@
             // and close the editor
             $('body').bind('mousedown.editor', function(e) {
                 // check to see if the click was in an etch tool
-                if ($(e.srcElement).not('.etch-editor-panel, .etch-editor-panel *, .etch-image-tools, .etch-image-tools *').size()) {
+                var target = e.target || e.srcElement;
+                if ($(target).not('.etch-editor-panel, .etch-editor-panel *, .etch-image-tools, .etch-image-tools *').size()) {
                     // remove editor
                     $editor.remove();
                     
