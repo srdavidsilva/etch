@@ -43,8 +43,7 @@
             'click .etch-ordered-list': 'toggleOrderedList',
             'click .etch-link': 'toggleLink',
             'click .etch-image': 'getImage',
-            'click .etch-save': 'save',
-            'click .etch-cite': 'addCitation'
+            'click .etch-save': 'save'
         },
         
         changeEditable: function() {
@@ -89,18 +88,6 @@
             range.surroundContents(el);
         },
         
-        addCitation: function(e) {
-            e.preventDefault();
-            var href = (prompt('Enter the citation url') || '').trim();
-            if (!href) {
-                return false;
-            }
-            var cursor = window.getSelection().getRangeAt(0);
-            var node = $('<a></a>').addClass('citation').attr({'href': href, 'title': href}).text('c')[0];
-            cursor.collapse();
-            cursor.insertNode(node);
-        },
-
         toggleBold: function(e) {
             e.preventDefault();
             document.execCommand('bold', false, null);
