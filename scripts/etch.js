@@ -224,7 +224,12 @@
                 $editor = $('<div class="etch-editor-panel">');
                 var editorAttrs = { editable: $editable, editableModel: this.model };
                 document.body.appendChild($editor[0]);
-                $editor.etchInstantiate({classType: 'Editor', attrs: editorAttrs});
+                var model = new etch.models.Editor();
+                var editorView = new etch.views.Editor({model: model, el: $editor});
+
+                $editor.data({model: model, view: editorView});
+                
+                // $editor.etchInstantiate({classType: 'Editor', attrs: editorAttrs});
                 editorModel = $editor.data('model');
 
             // check if we are on a new editable
@@ -279,35 +284,35 @@
         }
     });
 
-    // jquery helper functions
-    $.fn.etchInstantiate = function(options, cb) {
-        return this.each(function() {
-            var $el = $(this);
-            options || (options = {});
-
-            settings = {
-                el: this,
-                attrs: {}
-            }
-
-            _.extend(settings, options);
-
-            var model = new models[settings.classType](settings.attrs, settings);
-
-            // initialize a view is there is one
-            if (_.isFunction(views[settings.classType])) {
-                var view = new views[settings.classType]({model: model, el: this, tagName: this.tagName});
-            }
-           
-            // stash the model and view on the elements data object
-            $el.data({model: model});
-            $el.data({view: view});
-
-            if (_.isFunction(cb)) {
-                cb({model: model, view: view});
-            }
-        });
-    }
+    // // jquery helper functions
+    // $.fn.etchInstantiate = function(options, cb) {
+    //     return this.each(function() {
+    //         var $el = $(this);
+    //         options || (options = {});
+    // 
+    //         settings = {
+    //             el: this,
+    //             attrs: {}
+    //         }
+    // 
+    //         _.extend(settings, options);
+    // 
+    //         var model = new models[settings.classType](settings.attrs, settings);
+    // 
+    //         // initialize a view is there is one
+    //         if (_.isFunction(views[settings.classType])) {
+    //             var view = new views[settings.classType]({model: model, el: this, tagName: this.tagName});
+    //         }
+    //        
+    //         // stash the model and view on the elements data object
+    //         $el.data({model: model});
+    //         $el.data({view: view});
+    // 
+    //         if (_.isFunction(cb)) {
+    //             cb({model: model, view: view});
+    //         }
+    //     });
+    // }
 
     $.fn.etchFindEditable = function() {
         // function that looks for the editable selector on itself or its parents
