@@ -11,7 +11,7 @@
     // in the markup as "data-button-class"
     etch.buttonClasses = {
         'default': ['save'],
-        'all': ['bold', 'italic', 'underline', 'unordered-list', 'ordered-list', 'link', 'save'],
+        'all': ['bold', 'italic', 'underline', 'unordered-list', 'ordered-list', 'link', 'save', 'clear-formatting'],
         'title': ['bold', 'italic', 'underline', 'save']
     }
 
@@ -43,7 +43,8 @@
             'click .etch-ordered-list': 'toggleOrderedList',
             'click .etch-link': 'toggleLink',
             'click .etch-image': 'getImage',
-            'click .etch-save': 'save'
+            'click .etch-save': 'save',
+            'click .etch-clear-formatting': 'clearFormatting'
         },
         
         changeEditable: function() {
@@ -86,6 +87,11 @@
             var range = selectionOrRange === Range ? selectionOrRange : selectionOrRange.getRangeAt(0);
             var el = document.createElement(elString);
             range.surroundContents(el);
+        },
+        
+        clearFormatting: function(e) {
+          e.preventDefault();
+          document.execCommand('removeFormat', false, null);
         },
         
         toggleBold: function(e) {
