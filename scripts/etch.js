@@ -11,7 +11,7 @@
     // in the markup as "data-button-class"
     etch.buttonClasses = {
         'default': ['save'],
-        'all': ['bold', 'italic', 'underline', 'unordered-list', 'ordered-list', 'link', 'save', 'clear-formatting'],
+        'all': ['bold', 'italic', 'underline', 'unordered-list', 'ordered-list', 'link', 'clear-formatting', 'save'],
         'title': ['bold', 'italic', 'underline', 'save']
     }
 
