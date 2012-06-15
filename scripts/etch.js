@@ -18,6 +18,9 @@
     // Default callback to ensure a new link URL starts with http:// or https:// 
     //    before it's added to the DOM.
     //
+    //    NOTE: This implementation will disallow relative URLs from being added
+    //          but will make it easier for users typing external URLs.
+    //
     //    Feel free to override this callback in your own code to make it
     //    more or less restrictive.
     etch.enhanceURL = function (url) {
