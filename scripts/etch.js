@@ -90,23 +90,23 @@
         },
         
         disableStyleWithCSS: function () {
-          // Firefox seems to be only browser that defaults to `StyleWithCSS == true`
-          // so we turn it off here. Plus a try..catch to avoid an error being thrown in IE8.
-          try {
-            document.execCommand('StyleWithCSS', false, false);
-          }
-          catch(e) {
-            // expecting to just eat IE8 error, but if different error, rethrow
-            if (e.message !== "Invalid argument.") {
-              throw e;
+            // Firefox seems to be only browser that defaults to `StyleWithCSS == true`
+            // so we turn it off here. Plus a try..catch to avoid an error being thrown in IE8.
+            try {
+                document.execCommand('StyleWithCSS', false, false);
             }
-          }
+            catch(e) {
+                // expecting to just eat IE8 error, but if different error, rethrow
+                if (e.message !== "Invalid argument.") {
+                  throw e;
+                }
+            }
         },
         
         clearFormatting: function(e) {
-          e.preventDefault();
-          this.disableStyleWithCSS();
-          document.execCommand('removeFormat', false, null);
+            e.preventDefault();
+            this.disableStyleWithCSS();
+            document.execCommand('removeFormat', false, null);
         },
         
         toggleBold: function(e) {
