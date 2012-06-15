@@ -14,6 +14,19 @@
         'all': ['bold', 'italic', 'underline', 'unordered-list', 'ordered-list', 'link', 'clear-formatting', 'save'],
         'title': ['bold', 'italic', 'underline', 'save']
     }
+    
+    // Default callback to ensure a new link URL starts with http:// or https:// 
+    //    before it's added to the DOM.
+    //
+    //    Feel free to override this callback in your own code to make it
+    //    more or less restrictive.
+    etch.enhanceURL = function (url) {
+        if (/^((http|https)...)/.test(url)) {
+            return url;
+        } else {
+            return "http://" + url;
+        }
+    }
 
     models.Editor = Backbone.Model;
 
@@ -148,6 +161,12 @@
                 document.execCommand('unlink', false, null);
             } else {
                 var url = prompt('Enter a url');
+                
+                // if an enhanceURL callback exists, call it
+                if (etch.enhanceURL && 'function' === typeof etch.enhanceURL) {
+                  url = etch.enhanceURL(url);
+                }
+                
                 document.execCommand('createLink', false, url);
             }
         },
