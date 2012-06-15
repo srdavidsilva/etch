@@ -29,7 +29,7 @@
         } else {
             return "http://" + url;
         }
-    }
+    };
 
     models.Editor = Backbone.Model;
 
