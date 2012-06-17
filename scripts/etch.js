@@ -7,7 +7,7 @@
         etch = {};
 	
 	// versioning as per semver.org
-	etch.VERSION = 0.5.0;
+	etch.VERSION = '0.5.0';
 
     // selector to specify editable elements   
     etch.selector = '.editable';
@@ -296,7 +296,7 @@
             var $el = $(this);
             options || (options = {});
 
-            settings = {
+            var settings = {
                 el: this,
                 attrs: {}
             }
@@ -323,7 +323,7 @@
     $.fn.etchFindEditable = function() {
         // function that looks for the editable selector on itself or its parents
         // and returns that el when it is found
-        $el = $(this);
+        var $el = $(this);
         return $el.is(etch.selector) ? $el : $el.closest(etch.selector);
     }
     
