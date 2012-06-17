@@ -1,8 +1,13 @@
 (function() {
+	'use strict';
+    
     var models = {},
         views = {},
         collections = {},
         etch = {};
+	
+	// versioning as per semver.org
+	etch.VERSION = 0.5.0;
 
     // selector to specify editable elements   
     etch.selector = '.editable';
