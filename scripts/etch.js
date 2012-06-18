@@ -275,10 +275,10 @@
       try {
         document.execCommand('StyleWithCSS', false, false);
       }
-      catch (e) {
+      catch (err) {
         // expecting to just eat IE8 error, but if different error, rethrow
-        if (e.message !== "Invalid argument.") {
-          throw e;
+        if (err.message !== "Invalid argument.") {
+          throw err;
         }
       }
 
