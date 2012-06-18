@@ -269,6 +269,18 @@
           editableModel: this.model
         });
       }
+      
+      // Firefox seems to be only browser that defaults to `StyleWithCSS == true`
+      // so we turn it off here. Plus a try..catch to avoid an error being thrown in IE8.
+      try {
+        document.execCommand('StyleWithCSS', false, false);
+      }
+      catch (err) {
+        // expecting to just eat IE8 error, but if different error, rethrow
+        if (err.message !== "Invalid argument.") {
+          throw err;
+        }
+      }
 
       if (models.EditableImage) {
         // instantiate any images that may be in the editable
