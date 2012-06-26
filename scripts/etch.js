@@ -132,7 +132,7 @@
       // This uses the default browser UI prompt to get a url.
       // Override this function if you want to implement a custom UI.
         
-      var url = prompt('Enter a url');
+      var url = prompt('Enter a url', 'http://');
         
       // Ensure a new link URL starts with http:// or https:// 
       // before it's added to the DOM.
