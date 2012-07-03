@@ -7,7 +7,7 @@
     etch = {};
 	
   // versioning as per semver.org
-  etch.VERSION = '0.6.1';
+  etch.VERSION = '0.6.2';
 
   etch.config = {
     // selector to specify editable elements   
