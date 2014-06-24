@@ -17,8 +17,8 @@
     // in the markup as "data-button-class"   
     buttonClasses: {
       'default': ['save'],
-      'all': ['bold', 'italic', 'underline', 'unordered-list', 'ordered-list', 'link', 'clear-formatting', 'save'],
-      'title': ['bold', 'italic', 'underline', 'save']
+      'all': ['bold', 'superscript','subscript', 'italic', 'underline', 'unordered-list', 'ordered-list', 'link', 'clear-formatting', 'save'],
+      'title': ['bold', 'superscript','subscript', 'italic', 'underline', 'save']
     }
   };
 
@@ -40,6 +40,8 @@
 
     events: {
       'click .etch-bold': 'toggleBold',
+      'click .etch-superscript': 'toggleSuperscript',
+      'click .etch-subscript': 'toggleSubscript',
       'click .etch-italic': 'toggleItalic',
       'click .etch-underline': 'toggleUnderline',
       'click .etch-heading': 'toggleHeading',
@@ -104,6 +106,16 @@
     toggleBold: function(e) {
       e.preventDefault();
       document.execCommand('bold', false, null);
+    },
+
+    toggleSubscript: function(e) {
+      e.preventDefault();
+      document.execCommand('subscript', false, null);
+    },
+
+    toggleSuperscript: function(e) {
+      e.preventDefault();
+      document.execCommand('superscript', false, null);
     },
 
     toggleItalic: function(e) {
