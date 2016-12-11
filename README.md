@@ -66,7 +66,7 @@ etch.editableInit handles everything else for you except for saving. Etch will t
   var articleView = Backbone.View.extend({
     initialize: function() {
       _.bindAll(this, 'save');
-      this.model.bind('save', this.model.save);
+      this.model.bind('save', this.save);
     },
         
     events: {
