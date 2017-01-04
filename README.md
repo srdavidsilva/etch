@@ -1,6 +1,9 @@
 ### About
 Etch is a content editor built on Backbone.js and is designed to be easily plugged into your Backbone app or stand alone.
 
+### Maintainers Wanted
+I (joshontheweb) no longer have a use for etch in any of my own projects.  Unfortunately I've let this project languish for lack of time and interest.  If you are actively using etch in your projects and are interested in helping maintain the project, please reach out.  I'm looking for people who agree with the core philosophy of keeping etch small but easily extensible.
+
 ### Include Dependencies
 
 Etch depends on [jQuery](http://jquery.com), [Underscore](http://underscorejs.com), [Backbone](http://backbonejs.com), as well as [Rangy](http://code.google.com/p/rangy/) if you need support for legacy browsers (IE8 and prior).
