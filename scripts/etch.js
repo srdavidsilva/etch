@@ -266,7 +266,7 @@
       // if the editor isn't already built, build it
       var $editor = $('.etch-editor-panel');
       var editorModel = $editor.data('model');
-      if (!$editor.size()) {
+      if (!$editor.length) {
         $editor = $('<div class="etch-editor-panel">');
         var editorAttrs = { editable: $editable, editableModel: this.model };
         document.body.appendChild($editor[0]);
@@ -297,7 +297,7 @@
       if (models.EditableImage) {
         // instantiate any images that may be in the editable
         var $imgs = $editable.find('img');
-        if ($imgs.size()) {
+        if ($imgs.length) {
           var attrs = { editable: $editable, editableModel: this.model };
           $imgs.each(function() {
             var $this = $(this);
@@ -316,7 +316,7 @@
       $('body').unbind('mousedown.editor').bind('mousedown.editor', function(e) {
         // check to see if the click was in an etch tool
         var target = e.target || e.srcElement;
-        if ($(target).not('.etch-editor-panel, .etch-editor-panel *, .etch-image-tools, .etch-image-tools *').size()) {
+        if ($(target).not('.etch-editor-panel, .etch-editor-panel *, .etch-image-tools, .etch-image-tools *').length) {
           // remove editor
           $editor.remove();
                     
