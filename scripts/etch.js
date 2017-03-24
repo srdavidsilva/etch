@@ -201,11 +201,31 @@
 
     getImage: function(e) {
       e.preventDefault();
+      var iC = this.model.attributes.editable[0];
+      var upInput = $('#uploadImageInput'); // Form on Your Page enctype="multipart/form-data" id="upload_form" method="POST"
 
-      // call startUploader with callback to handle inserting it once it is uploaded/cropped
-      this.startUploader(this.insertImage);
+      upInput.click();
+      upInput.change(function(event){
+
+        var form = new FormData(); 
+
+        form.append('imageUpload', event.target.files[0]);
+        $.ajax({
+          url: '/yourUploadRoute,
+          data: form,
+          processData: false,
+          contentType: false,
+          type: 'POST',
+          success: function (data) {
+            iC.src = data;
+          }
+        });
+
+        return false;
+
+      })      
     },
-        
+
     startUploader: function(cb) {
       // initialize Image Uploader
       var model = new models.ImageUploader();
