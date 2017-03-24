@@ -211,7 +211,7 @@
 
         form.append('imageUpload', event.target.files[0]);
         $.ajax({
-          url: '/yourUploadRoute,
+          url: '/yourUploadRoute',
           data: form,
           processData: false,
           contentType: false,
